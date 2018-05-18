@@ -71,3 +71,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+class getCurrentDate{
+    // 現在時間
+    func now() -> Date{
+        let current = Date()
+        let current_dateFormatter = DateFormatter()
+        current_dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        current_dateFormatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
+        let current_time = current_dateFormatter.string(from: current)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
+        let CurrentDateTime = dateFormatter.date(from: current_time)
+        
+        return CurrentDateTime!
+        
+    }
+    //本月開始日期
+    func startOfCurrentMonth() -> Date {
+        let currentTime = getCurrentDate()
+        let date = currentTime.now()
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents(
+            Set<Calendar.Component>([.year, .month]), from: date)
+        let startOfMonth = calendar.date(from: components)!
+        return startOfMonth
+    }
+    //本月结束日期
+    func endOfCurrentMonth(returnEndTime:Bool = false) -> Date {
+        let calendar = NSCalendar.current
+        var components = DateComponents()
+        components.month = 1
+        if returnEndTime {
+            components.second = -1
+        } else {
+            components.day = -1
+        }
+        
+        let endOfMonth =  calendar.date(byAdding: components, to: startOfCurrentMonth())!
+        return endOfMonth
+    }
+    
+    //指定年月的开始日期
+    func startOfMonth(year: Int, month: Int) -> Date {
+        let calendar = NSCalendar.current
+        var startComps = DateComponents()
+        startComps.day = 1
+        startComps.month = month
+        startComps.year = year
+        let startDate = calendar.date(from: startComps)!
+        return startDate
+    }
+    
+    //指定年月的结束日期
+    func endOfMonth(year: Int, month: Int, returnEndTime:Bool = false) -> Date {
+        let calendar = NSCalendar.current
+        var components = DateComponents()
+        components.month = 1
+        if returnEndTime {
+            components.second = -1
+        } else {
+            components.day = -1
+        }
+        
+        let endOfYear = calendar.date(byAdding: components,
+                                      to: startOfMonth(year: year, month:month))!
+        return endOfYear
+    }
+    
+}
+
+let myEntityName = "ListInfo"
+let myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+let coreDataConnect = CoreDataConnect(context: myContext)

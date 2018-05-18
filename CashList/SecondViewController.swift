@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum Operation:String {
     case Add = "+"
@@ -15,13 +16,6 @@ enum Operation:String {
     case Multiply = "*"
     case None = "None"
     
-}
-
-enum CashListType:String {
-    case Datetime = "date"
-    case Cash = "cash"
-    case Type1 = "type1"
-    case Type2 = "type2"
 }
 
 class SecondViewController: UIViewController {
@@ -38,7 +32,7 @@ class SecondViewController: UIViewController {
     var currentOperation:Operation = .None
     var aType:String?
     var bType:String?
-    
+    var currentTime = Date()
     
     @IBOutlet weak var outputLabel: UILabel!
     
@@ -51,11 +45,14 @@ class SecondViewController: UIViewController {
     @IBAction func itemType(_ sender: RoundButton) {
         if let current_title1 = sender.currentTitle{
             if current_title1 == "收入"{
+                itemTypeButton.backgroundColor = UIColor(red: 15/255, green: 206/255, blue: 112/255, alpha: 1)
                 aType = "支出"
             }else{
+                itemTypeButton.backgroundColor = UIColor(red:255/255, green: 13/255, blue: 9/255, alpha: 1)
                 aType = "收入"
             }
             outputButton.setTitle("送出", for: .normal)
+            itemTypeButton.setTitleColor(UIColor.white,for: .normal)
             itemTypeButton.setTitle(aType, for: .normal)
         }
         
@@ -65,23 +62,32 @@ class SecondViewController: UIViewController {
         if let current_title2 = sender.currentTitle{
             switch current_title2{
             case "食":
+                itemTypeButton2.backgroundColor = UIColor(red: 243/255, green: 165/255, blue: 0, alpha: 1)
                 bType = "衣"
             case "衣":
+                itemTypeButton2.backgroundColor = UIColor(red: 113/255, green: 198/255, blue: 27/255, alpha: 1)
                 bType = "住"
             case "住":
+                itemTypeButton2.backgroundColor = UIColor(red: 44/255, green: 198/255, blue: 174/288, alpha: 1)
                 bType = "行"
             case "行":
+                itemTypeButton2.backgroundColor = UIColor(red: 59/255, green: 91/255, blue: 175/255, alpha: 1)
                 bType = "育"
             case "育":
+                itemTypeButton2.backgroundColor = UIColor(red: 117/255, green: 0, blue: 138/255, alpha: 1)
                 bType = "樂"
             case "樂":
+                itemTypeButton2.backgroundColor = UIColor(red: 0/255, green: 174/255, blue: 240/255, alpha: 1)
                 bType = "其他"
             case "其他":
+                itemTypeButton2.backgroundColor = UIColor(red: 255/255, green: 120/255, blue: 145/255, alpha: 1)
                 bType = "食"
             default:
+                itemTypeButton2.backgroundColor = UIColor(red: 255/255, green: 120/255, blue: 145/255, alpha: 1)
                 bType = "食"
             }
             outputButton.setTitle("送出", for: .normal)
+            itemTypeButton2.setTitleColor(UIColor.white,for: .normal)
             itemTypeButton2.setTitle(bType, for: .normal)
         }
         
@@ -98,20 +104,55 @@ class SecondViewController: UIViewController {
         if let current_title = sender.currentTitle{
             if current_title == "送出"{
                 // 傳值
-                if let firstViewController = tabBarController?.viewControllers?[0] as? FirstViewController{
+                if let firstViewController = tabBarController?.viewControllers?[1] as? FirstViewController{
+                    
+                    // auto increment
+                    let myUserDefaults = UserDefaults.standard
+                    var seq = 1
+                    if let idSeq = myUserDefaults.object(forKey: "idSeq") as? Int {
+                        seq = idSeq + 1
+                    }
                     
                     if infoFromViewOne == nil{
                         
+                        let date = getCurrentDate()
+                        
+                        let insetData = NSEntityDescription.insertNewObject(forEntityName: myEntityName, into: myContext)
+                        
+                        insetData.setValue(date.now(), forKey: "datetime")
+                        insetData.setValue(seq, forKey: "id")
+                        insetData.setValue(outputLabel.text!, forKey: "price")
+                        
+                        insetData.setValue(aType!, forKey: "type1")
+                        
+                        
+                        
+                        insetData.setValue(bType!, forKey: "type2")
+                        
+                        do {
+                            try myContext.save()
+                            myUserDefaults.set(seq, forKey: "idSeq")
+                            myUserDefaults.synchronize()
+                            firstViewController.data.append(["\(seq)","\(outputLabel.text!)","\(aType!)","\(bType!)","\(date.now())"])
+                            print("新增資料成功")
+                        } catch {
+                            print(error.localizedDescription)
+                        }
                         
                     }else{
-                        
-                        
+                        // update
+                        let updateId = infoFromViewOne
+                        let whereid = "id = \(updateId!)"
+                        let updateResult = coreDataConnect.update(myEntityName, predicate: whereid, attributeInfo: ["price":"\(outputLabel.text!)","type1":aType!,"type2":bType!])
+                        if updateResult {
+                            print("更新資料成功")
+                        }
                     }
-                    
+            
                     firstViewController.myTableView.reloadData()
                 }
             }
-            tabBarController?.selectedIndex = 0
+            tabBarController?.selectedIndex = 1
         }
     }
     
@@ -130,6 +171,7 @@ class SecondViewController: UIViewController {
         currentOperation = .None
         outputLabel.text = "0"
         aType = "收入"
+        itemTypeButton.backgroundColor = UIColor(red:255/255, green: 13/255, blue: 9/255, alpha: 1)
         bType = "食"
         itemTypeButton.setTitle(aType, for: .normal)
         itemTypeButton2.setTitle(bType, for: .normal)
@@ -198,19 +240,26 @@ class SecondViewController: UIViewController {
             currentOperation = operation
         }
     }
-    
+    var data = [[String]]()
     override func viewWillAppear(_ animated: Bool) {
+        
         if infoFromViewOne != nil{
-            
-            if let cash = UserDefaults.standard.stringArray(forKey: "\(CashListType.Cash)"){
-                outputLabel.text = cash[infoFromViewOne!]
+            // select
+            let whereid = "id= \(infoFromViewOne!)"
+            let selectResult = coreDataConnect.retrieve(myEntityName, predicate: whereid, sort: [["id":true]], limit: nil)
+            if let results = selectResult {
+                for result in results {
+                    outputLabel.text! = result.value(forKey: "price") as! String
+                    aType = (result.value(forKey: "type1") as! String)
+                    if aType == "支出"{
+                        itemTypeButton.backgroundColor = UIColor(red: 15/255, green: 206/255, blue: 112/255, alpha: 1)
+                    }else{
+                        itemTypeButton.backgroundColor = UIColor(red:255/255, green: 13/255, blue: 9/255, alpha: 1)
+                    }
+                    bType = (result.value(forKey: "type2") as! String)
+                }
             }
-            if let type1 = UserDefaults.standard.stringArray(forKey: "\(CashListType.Type1)"){
-                aType = "\(type1[infoFromViewOne!])"
-            }
-            if let type2 = UserDefaults.standard.stringArray(forKey: "\(CashListType.Type2)"){
-                bType = "\(type2[infoFromViewOne!])"
-            }
+            runningNumber = outputLabel.text!
         }else{
             outputLabel.text = "0"
             aType = "收入"
@@ -224,6 +273,7 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

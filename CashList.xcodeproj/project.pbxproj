@@ -7,27 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981CC7BF20AD8FC2006A304E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 981CC7BE20AD8FC2006A304E /* Assets.xcassets */; };
 		983B9BB320A410EF00495E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B9BB220A410EF00495E51 /* AppDelegate.swift */; };
 		983B9BB520A410EF00495E51 /* FistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B9BB420A410EF00495E51 /* FistViewController.swift */; };
 		983B9BB820A410EF00495E51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983B9BB620A410EF00495E51 /* Main.storyboard */; };
 		983B9BBB20A410EF00495E51 /* CashList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 983B9BB920A410EF00495E51 /* CashList.xcdatamodeld */; };
-		983B9BBD20A410F100495E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983B9BBC20A410F100495E51 /* Assets.xcassets */; };
 		983B9BC020A410F100495E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983B9BBE20A410F100495E51 /* LaunchScreen.storyboard */; };
 		983B9BC820A4116800495E51 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B9BC720A4116800495E51 /* SecondViewController.swift */; };
 		983B9BCA20A411AF00495E51 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B9BC920A411AF00495E51 /* RoundButton.swift */; };
+		98BED52620A4415F00F93117 /* CoreDataConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BED52520A4415F00F93117 /* CoreDataConnect.swift */; };
+		98BED52A20A457D300F93117 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BED52920A457D300F93117 /* NewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		981CC7BE20AD8FC2006A304E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983B9BAF20A410EF00495E51 /* CashList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983B9BB220A410EF00495E51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		983B9BB420A410EF00495E51 /* FistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FistViewController.swift; sourceTree = "<group>"; };
 		983B9BB720A410EF00495E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		983B9BBA20A410EF00495E51 /* CashList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CashList.xcdatamodel; sourceTree = "<group>"; };
-		983B9BBC20A410F100495E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983B9BBF20A410F100495E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		983B9BC120A410F100495E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		983B9BC720A4116800495E51 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		983B9BC920A411AF00495E51 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		98BED52520A4415F00F93117 /* CoreDataConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConnect.swift; sourceTree = "<group>"; };
+		98BED52920A457D300F93117 /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,13 +65,15 @@
 			isa = PBXGroup;
 			children = (
 				983B9BB220A410EF00495E51 /* AppDelegate.swift */,
+				98BED52920A457D300F93117 /* NewViewController.swift */,
 				983B9BB420A410EF00495E51 /* FistViewController.swift */,
 				983B9BC720A4116800495E51 /* SecondViewController.swift */,
 				983B9BB620A410EF00495E51 /* Main.storyboard */,
 				983B9BC920A411AF00495E51 /* RoundButton.swift */,
-				983B9BBC20A410F100495E51 /* Assets.xcassets */,
+				981CC7BE20AD8FC2006A304E /* Assets.xcassets */,
 				983B9BBE20A410F100495E51 /* LaunchScreen.storyboard */,
 				983B9BC120A410F100495E51 /* Info.plist */,
+				98BED52520A4415F00F93117 /* CoreDataConnect.swift */,
 				983B9BB920A410EF00495E51 /* CashList.xcdatamodeld */,
 			);
 			path = CashList;
@@ -132,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				983B9BC020A410F100495E51 /* LaunchScreen.storyboard in Resources */,
-				983B9BBD20A410F100495E51 /* Assets.xcassets in Resources */,
+				981CC7BF20AD8FC2006A304E /* Assets.xcassets in Resources */,
 				983B9BB820A410EF00495E51 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,7 +152,9 @@
 			files = (
 				983B9BBB20A410EF00495E51 /* CashList.xcdatamodeld in Sources */,
 				983B9BCA20A411AF00495E51 /* RoundButton.swift in Sources */,
+				98BED52A20A457D300F93117 /* NewViewController.swift in Sources */,
 				983B9BC820A4116800495E51 /* SecondViewController.swift in Sources */,
+				98BED52620A4415F00F93117 /* CoreDataConnect.swift in Sources */,
 				983B9BB520A410EF00495E51 /* FistViewController.swift in Sources */,
 				983B9BB320A410EF00495E51 /* AppDelegate.swift in Sources */,
 			);
@@ -295,6 +303,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56KPK4MUQB;
 				INFOPLIST_FILE = CashList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +322,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56KPK4MUQB;
 				INFOPLIST_FILE = CashList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
