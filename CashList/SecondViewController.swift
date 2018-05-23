@@ -122,11 +122,7 @@ class SecondViewController: UIViewController {
                         insetData.setValue(date.now(), forKey: "datetime")
                         insetData.setValue(seq, forKey: "id")
                         insetData.setValue(outputLabel.text!, forKey: "price")
-                        
                         insetData.setValue(aType!, forKey: "type1")
-                        
-                        
-                        
                         insetData.setValue(bType!, forKey: "type2")
                         
                         do {
@@ -135,6 +131,7 @@ class SecondViewController: UIViewController {
                             myUserDefaults.synchronize()
                             firstViewController.data.append(["\(seq)","\(outputLabel.text!)","\(aType!)","\(bType!)","\(date.now())"])
                             print("新增資料成功")
+                            
                         } catch {
                             print(error.localizedDescription)
                         }
@@ -149,7 +146,7 @@ class SecondViewController: UIViewController {
                         }
                     }
             
-                    firstViewController.myTableView.reloadData()
+                    
                 }
             }
             tabBarController?.selectedIndex = 1
@@ -242,7 +239,7 @@ class SecondViewController: UIViewController {
     }
     var data = [[String]]()
     override func viewWillAppear(_ animated: Bool) {
-        
+        itemTypeButton.backgroundColor = UIColor(red:255/255, green: 13/255, blue: 9/255, alpha: 1)
         if infoFromViewOne != nil{
             // select
             let whereid = "id= \(infoFromViewOne!)"

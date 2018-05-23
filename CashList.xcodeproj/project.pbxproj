@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86B543705EA919294021A366 /* Pods_CashList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7962B401C260616D07461A4 /* Pods_CashList.framework */; };
 		981CC7BF20AD8FC2006A304E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 981CC7BE20AD8FC2006A304E /* Assets.xcassets */; };
 		983B9BB320A410EF00495E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B9BB220A410EF00495E51 /* AppDelegate.swift */; };
 		983B9BB520A410EF00495E51 /* FistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B9BB420A410EF00495E51 /* FistViewController.swift */; };
@@ -32,6 +33,9 @@
 		983B9BC920A411AF00495E51 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		98BED52520A4415F00F93117 /* CoreDataConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConnect.swift; sourceTree = "<group>"; };
 		98BED52920A457D300F93117 /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		B4E7EC6FD91B7ED2B4F3E4AD /* Pods-CashList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CashList/Pods-CashList.debug.xcconfig"; sourceTree = "<group>"; };
+		BC4A7599F3CA26778147C753 /* Pods-CashList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashList.release.xcconfig"; path = "Pods/Target Support Files/Pods-CashList/Pods-CashList.release.xcconfig"; sourceTree = "<group>"; };
+		E7962B401C260616D07461A4 /* Pods_CashList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CashList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B543705EA919294021A366 /* Pods_CashList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +55,8 @@
 			children = (
 				983B9BB120A410EF00495E51 /* CashList */,
 				983B9BB020A410EF00495E51 /* Products */,
+				CDC99554F3BC51F9E20FEC48 /* Pods */,
+				DCFD1D828973AF6123EBAB85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,23 @@
 			path = CashList;
 			sourceTree = "<group>";
 		};
+		CDC99554F3BC51F9E20FEC48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B4E7EC6FD91B7ED2B4F3E4AD /* Pods-CashList.debug.xcconfig */,
+				BC4A7599F3CA26778147C753 /* Pods-CashList.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DCFD1D828973AF6123EBAB85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7962B401C260616D07461A4 /* Pods_CashList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 983B9BC420A410F100495E51 /* Build configuration list for PBXNativeTarget "CashList" */;
 			buildPhases = (
+				C5D4119A44CC3B6B765F2004 /* [CP] Check Pods Manifest.lock */,
 				983B9BAB20A410EF00495E51 /* Sources */,
 				983B9BAC20A410EF00495E51 /* Frameworks */,
 				983B9BAD20A410EF00495E51 /* Resources */,
+				7443BDF4E73FBE05CA878A50 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -144,6 +170,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7443BDF4E73FBE05CA878A50 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CashList/Pods-CashList-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CashList/Pods-CashList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5D4119A44CC3B6B765F2004 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CashList-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		983B9BAB20A410EF00495E51 /* Sources */ = {
@@ -233,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -287,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -298,12 +363,13 @@
 		};
 		983B9BC520A410F100495E51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4E7EC6FD91B7ED2B4F3E4AD /* Pods-CashList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56KPK4MUQB;
 				INFOPLIST_FILE = CashList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,12 +383,13 @@
 		};
 		983B9BC620A410F100495E51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC4A7599F3CA26778147C753 /* Pods-CashList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56KPK4MUQB;
 				INFOPLIST_FILE = CashList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

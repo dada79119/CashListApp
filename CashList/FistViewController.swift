@@ -90,8 +90,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             fatalError("\(error)")
         }
         
-        
-        
         let currentDateArr = startDate.split{$0 == "-"}.map(String.init)
         if let currentYear = Int(currentDateArr[0]){
             if  let i = YearArray.index(of: currentYear) {
@@ -101,7 +99,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         if let currentMonth = Int(currentDateArr[1]){
             myPickeView.selectRow(currentMonth-1, inComponent: 1, animated: false)
         }
-        
+        myTableView.reloadData()
     }
     
     override func viewDidLoad() {
