@@ -2,10 +2,10 @@
 
 The CashList is a accounting application.
 
-It add customerize calculator to bill the item.
+It add customize calculator to bill the item and chart analysis
 
 # How to play
-1. open **CashList.xcodeproj**
+1. open **CashList.xcworkspace**
 2. in xcode: **run**
 
 # App Screenshots
